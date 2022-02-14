@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  audio:
+    image: balenablocks/audio
+    privileged: true
+    ports:
+      - 4317:4317
+  ei:
+    restart: always
+    build: .
+    privileged: true
+    ports:
+      - "80:80"
+    environment:
+      PULSE_SERVER: tcp:audio:4317
