@@ -12,5 +12,12 @@ services:
     privileged: true
     ports:
       - "80:80"
+      - "4912:4912"
     environment:
       PULSE_SERVER: tcp:audio:4317
+      UDEV: 1
+    labels:
+      io.balena.features.dbus: '1'
+      io.balena.features.kernel-modules: '1'
+    devices:
+      - "/dev:/dev"
