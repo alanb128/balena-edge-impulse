@@ -14,6 +14,13 @@ When starting a video capture source... We're actively looking for a solution.
 
 You need to have a balena account and an Edge Impulse account with a working project.
 
+Add the following device configuration variables:
+
+`BALENA_HOST_CONFIG_gpu_mem` = 128
+
+`BALENA_HOST_CONFIG_start_x` = 1
+
+
 Push this project to your fleet (Raspberry Pi 4 only) and then SSH into the "ei" container.
 
 Run `edge-impulse-linux` and follow the prompts.
