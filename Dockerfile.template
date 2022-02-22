@@ -7,9 +7,10 @@ RUN install_packages build-essential \
     g++ \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-plugins-base \
-    gstreamer1.0-plugins-base-appsmake \
+    gstreamer1.0-plugins-base-apps \
     gstreamer1.0-plugins-good \
-    gstreamer1.0-tools \    
+    gstreamer1.0-tools \
+    make \   
     nodejs \
     sox 
 RUN npm config set user root && npm install edge-impulse-linux -g --unsafe-perm
