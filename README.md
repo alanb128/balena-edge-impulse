@@ -1,22 +1,16 @@
 # balena-edge-impulse
-Quick project for running Edge Impulse on balena. Updated for 2022
+Updated for 2022!
 
-Currently this is broken with the error:
+Quick project for running Edge Impulse on balena, specifically providing an example of accessing the Pi V2 camera using libcamera on Bullseye.
 
-```
-[SER] Using camera bcm2835-isp (/dev/video15) starting...
-Failed to initialize linux tool Capture process failed with code 1
-```
-
-When starting a video capture source... We're actively looking for a solution.
-
+This project also installs the files required to run the [Edge Impulse Python SDK](https://docs.edgeimpulse.com/docs/linux-python-sdk).
 ## Use
 
 You need to have a balena account and an Edge Impulse account with a working project.
 
 Add the following device configuration variables:
 
-`BALENA_HOST_CONFIG_gpu_mem` = 128
+`BALENA_HOST_CONFIG_gpu_mem` = 64
 
 `BALENA_HOST_CONFIG_start_x` = 1
 
