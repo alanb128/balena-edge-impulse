@@ -16,7 +16,7 @@ RUN install_packages gcc g++ make build-essential nodejs sox \
 RUN npm config set user root && sudo npm install edge-impulse-linux -g --unsafe-perm    
 
 # Edge Impulse SDK (optional)
-install_packages libatlas-base-dev libportaudio2 libportaudiocpp0 portaudio19-dev \
+RUN install_packages libatlas-base-dev libportaudio2 libportaudiocpp0 portaudio19-dev \
     python3-pyaudio python3-psutil python3-pip ffmpeg libsm6 libxext6
 # (See https://exerror.com/importerror-libgl-so-1-cannot-open-shared-object-file-no-such-file-or-directory/)   
 RUN pip3 install edge_impulse_linux -i https://pypi.python.org/simple
