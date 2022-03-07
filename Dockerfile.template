@@ -1,18 +1,33 @@
 FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:bullseye
 
-RUN apt update && apt upgrade -y
-RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
-RUN install_packages build-essential \
-    gcc \
-    g++ \
-    gstreamer1.0-plugins-bad \
-    gstreamer1.0-plugins-base \
-    gstreamer1.0-plugins-base-apps \
-    gstreamer1.0-plugins-good \
-    gstreamer1.0-tools \
-    make \   
-    nodejs \
-    sox 
-RUN npm config set user root && npm install edge-impulse-linux -g --unsafe-perm
+RUN install_packages \
+    libcamera-dev \
+    libcamera-apps-lite \
+    python3 \
+    v4l-utils
 
-CMD ["sleep", "infinity"]
+# Edge Impulse Linux
+RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+
+RUN install_packages gcc g++ make build-essential nodejs sox \
+    gstreamer1.0-tools gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-base gstreamer1.0-plugins-base-apps
+
+RUN npm config set user root && sudo npm install edge-impulse-linux -g --unsafe-perm    
+
+# Edge Impulse SDK (optional)
+install_packages libatlas-base-dev libportaudio2 libportaudiocpp0 portaudio19-dev \
+    python3-pyaudio python3-psutil python3-pip ffmpeg libsm6 libxext6
+# (See https://exerror.com/importerror-libgl-so-1-cannot-open-shared-object-file-no-such-file-or-directory/)   
+RUN pip3 install edge_impulse_linux -i https://pypi.python.org/simple
+RUN pip3 install six
+
+WORKDIR /usr/src/app
+
+COPY start.sh ./
+
+RUN chmod +x start.sh
+
+ENV UDEV=on
+
+CMD ["sh","./start.sh"]
