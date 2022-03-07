@@ -12,7 +12,7 @@ Add the following device configuration variables:
 
 `BALENA_HOST_CONFIG_gpu_mem` = 64
 
-`BALENA_HOST_CONFIG_start_x` = 1
+`BALENA_HOST_CONFIG_camera_auto_detect` = 1
 
 
 Push this project to your fleet (Raspberry Pi 4 only) and then SSH into the "ei" container.
