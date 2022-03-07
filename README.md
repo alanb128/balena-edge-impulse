@@ -8,12 +8,11 @@ This project also installs the files required to run the [Edge Impulse Python SD
 
 You need to have a balena account and an Edge Impulse account with a working project.
 
-Add the following device configuration variables:
-
-`BALENA_HOST_CONFIG_gpu_mem` = 64
+Add the following device configuration variable:
 
 `BALENA_HOST_CONFIG_camera_auto_detect` = 1
 
+(You may also need to increase the device GPU memory to at least 32 MB.)
 
 Push this project to your fleet (Raspberry Pi 4 only) and then SSH into the "ei" container.
 
